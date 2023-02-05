@@ -1,3 +1,3 @@
-<h1>My App</h1>
-<p class="descr">Here will be code template</p>
-<mw-media-item></mw-media-item>
+<h1>Media Watch List</h1>
+<p class="descr">Media I want to watch list</p>
+<mw-media-item (delete)="onMediaItemDelete($event)" [mediaItem]="firstMediaItem"></mw-media-item>

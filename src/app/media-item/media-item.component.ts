@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'mw-media-item',
@@ -12,6 +12,12 @@ export class MediaItemComponent implements OnInit {
   ngOnInit() {
   }
 
-  name = "The Redemption";
+  @Input() mediaItem;
+  @Output() delete = new EventEmitter();
+
+  onDelete = () => {
+    console.log("deleted");
+    this.delete.emit(this.mediaItem);
+  }
 
 }
