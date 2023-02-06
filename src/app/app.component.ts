@@ -6,6 +6,7 @@ import { Component } from "@angular/core";
   styleUrls: ["./app.component.css"]
 })
 export class AppComponent {
+
   firstMediaItem = {
     id: 1,
     name: 'Firebug',
@@ -16,7 +17,5 @@ export class AppComponent {
     isFavorite: false
   };
 
-  onMediaDeleteItem(mediaItem) {
-
-  }
+  onMediaDeleteItem(mediaItem) {}
 }
