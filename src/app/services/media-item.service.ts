@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 
+// it tells Angular to make an instance of this service to use in this NgModule and it's children modules.
 @Injectable({
   providedIn: 'root'
 })
