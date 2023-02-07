@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
 import { FormGroup, FormControl, Validators, FormBuilder } from "@angular/forms";
 import { MediaItemService } from '../services/media-item.service';
 
@@ -10,7 +10,12 @@ import { MediaItemService } from '../services/media-item.service';
 export class MediaItemFormComponent implements OnInit {
   form: FormGroup;
 
-  constructor(private formBuiled: FormBuilder, private mediaItemService: MediaItemService) { }
+  // Any public properties in the Component class are available in the tamplate (HTML)
+  constructor(
+      private formBuiled: FormBuilder, 
+      private mediaItemService: MediaItemService,
+      @Inject('lookupListToken') public lookupLists
+    ) { }
 
   ngOnInit() {
     this.form = this.formBuiled.group({
