@@ -1,4 +1,6 @@
 import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { map } from 'rxjs/operators';
 
 // it tells Angular to make an instance of this service to use in this NgModule and it's children modules.
 @Injectable({
@@ -50,8 +52,15 @@ export class MediaItemService {
     }
   ];
 
+  constructor(private http: HttpClient) {}
+
   get() {
-    return this.mediaItems;
+    // http.get returns http response object in Observable wrap
+    // Для предварительного преобразования отправляемых объектом Observable данных 
+    // или преобразования и управления самими Observable используются специальные функции - операторы,
+    // они указываются в методе pipe()
+    return this.http.get<MediaItemResponse>('mediaitems')
+    .pipe(map(response => {return response.mediaItems; }))
   }
 
   add(mediaItem) {
@@ -64,4 +73,18 @@ export class MediaItemService {
       this.mediaItems.splice(index, 1)
     }
   }
+}
+
+interface MediaItem {
+  id: number;
+  name: string;
+  medium: string;
+  category: string;
+  year: number;
+  watchedOn: number;
+  isFavorite: boolean;
+}
+
+interface MediaItemResponse {
+  mediaItems: MediaItem[];
 }
