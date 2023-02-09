@@ -20,6 +20,7 @@
     color: #d93a3e;
   }
   section {
+    padding-top: 30px;
     flex: 1;
     display: flex;
     flex-flow: row wrap;
