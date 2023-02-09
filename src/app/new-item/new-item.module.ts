@@ -14,6 +14,6 @@ import { newItemsRouting } from "./new-item.routing";
         MediaItemFormComponent
     ]
 })
-export class NewItem {
+export class NewItemModule {
 
 }

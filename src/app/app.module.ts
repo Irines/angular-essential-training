@@ -9,11 +9,10 @@ import { lookupLists, lookupListsToken } from "./providers";
 import { HttpClientModule, HttpXhrBackend } from "@angular/common/http";
 import { MockXHRBackend } from "./mock-xhr-backend";
 import { routing } from "./app.routing";
-import { NewItem } from "./new-item/new-item.module";
 // HttpXhrBackend uses XMLHttpRequest to send requests to a backend server.
 
 @NgModule({
-  imports: [BrowserModule, HttpClientModule, routing, NewItem],
+  imports: [BrowserModule, HttpClientModule, routing],
   declarations: [AppComponent, MediaItemComponent, MediaItemListComponent, FavoriteDirective, CategoryListPipe],
   bootstrap: [AppComponent],
   providers: [
