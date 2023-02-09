@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { MediaItem } from '../interfaces/media';
 import { MediaItemService } from '../services/media-item.service';
 
 @Component({
@@ -7,19 +8,27 @@ import { MediaItemService } from '../services/media-item.service';
   styleUrls: ['./media-item-list.component.css']
 })
 export class MediaItemListComponent implements OnInit {
-  mediaItems;
+  medium = '';
+  mediaItems: MediaItem[];
 
-  constructor(private mediaItemService: MediaItemService) { }
+  constructor(private mediaItemService: MediaItemService) {}
 
   ngOnInit() {
-    // observable http response object subscription
-    this.mediaItemService.get().subscribe(mediaItems => {
-      this.mediaItems = mediaItems;
-    })
+    this.getMediaItems(this.medium);
   }
 
-  onMediaItemDelete(mediaItem) { 
+  onMediaItemDelete(mediaItem) {
     this.mediaItemService.delete(mediaItem)
+    .subscribe(() => {
+      this.getMediaItems(this.medium)
+    });
   }
 
+  getMediaItems(medium: string) {
+    this.medium = medium;
+    this.mediaItemService.get(medium)
+      .subscribe(mediaItems => {
+        this.mediaItems = mediaItems;
+      });
+  }
 }

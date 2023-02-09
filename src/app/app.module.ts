@@ -10,6 +10,7 @@ import { ReactiveFormsModule } from "@angular/forms";
 import { lookupLists, lookupListsToken } from "./providers";
 import { HttpClientModule, HttpXhrBackend } from "@angular/common/http";
 import { MockXHRBackend } from "./mock-xhr-backend";
+// HttpXhrBackend uses XMLHttpRequest to send requests to a backend server.
 
 @NgModule({
   imports: [BrowserModule, ReactiveFormsModule, HttpClientModule],
@@ -17,7 +18,7 @@ import { MockXHRBackend } from "./mock-xhr-backend";
   bootstrap: [AppComponent],
   providers: [
     { provide: lookupListsToken, useValue: lookupLists},
-    { provide: HttpClientModule, useClass: MockXHRBackend}
+    { provide: HttpXhrBackend, useClass: MockXHRBackend}
   ]
 })
 export class AppModule {}
