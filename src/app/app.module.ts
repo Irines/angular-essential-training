@@ -9,15 +9,35 @@ import { lookupLists, lookupListsToken } from "./providers";
 import { HttpClientModule, HttpXhrBackend } from "@angular/common/http";
 import { MockXHRBackend } from "./mock-xhr-backend";
 import { routing } from "./app.routing";
+import { CategoryListComponent } from './category-list.component';
 // HttpXhrBackend uses XMLHttpRequest to send requests to a backend server.
 
 @NgModule({
-  imports: [BrowserModule, HttpClientModule, routing],
-  declarations: [AppComponent, MediaItemComponent, MediaItemListComponent, FavoriteDirective, CategoryListPipe],
-  bootstrap: [AppComponent],
+  imports: [
+    BrowserModule, 
+    HttpClientModule, 
+    routing
+  ],
+  declarations: [
+    AppComponent, 
+    MediaItemComponent, 
+    MediaItemListComponent, 
+    FavoriteDirective, 
+    CategoryListPipe, 
+    CategoryListComponent
+  ],
+  bootstrap: [
+    AppComponent
+  ],
   providers: [
-    { provide: lookupListsToken, useValue: lookupLists},
-    { provide: HttpXhrBackend, useClass: MockXHRBackend}
+    { 
+      provide: lookupListsToken, 
+      useValue: lookupLists
+    },
+    { 
+      provide: HttpXhrBackend, 
+      useClass: MockXHRBackend
+    }
   ]
 })
 export class AppModule {}
