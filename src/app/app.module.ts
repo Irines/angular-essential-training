@@ -5,17 +5,16 @@ import { MediaItemComponent } from './media-item/media-item.component';
 import { MediaItemListComponent } from './media-item-list/media-item-list.component';
 import { FavoriteDirective } from "./directives/favorite.directive";
 import { CategoryListPipe } from "./pipes/category-list.pipe";
-import { MediaItemFormComponent } from './media-item-form/media-item-form.component';
-import { ReactiveFormsModule } from "@angular/forms";
 import { lookupLists, lookupListsToken } from "./providers";
 import { HttpClientModule, HttpXhrBackend } from "@angular/common/http";
 import { MockXHRBackend } from "./mock-xhr-backend";
 import { routing } from "./app.routing";
+import { NewItem } from "./new-item/new-item.module";
 // HttpXhrBackend uses XMLHttpRequest to send requests to a backend server.
 
 @NgModule({
-  imports: [BrowserModule, ReactiveFormsModule, HttpClientModule, routing],
-  declarations: [AppComponent, MediaItemComponent, MediaItemListComponent, FavoriteDirective, CategoryListPipe, MediaItemFormComponent],
+  imports: [BrowserModule, HttpClientModule, routing, NewItem],
+  declarations: [AppComponent, MediaItemComponent, MediaItemListComponent, FavoriteDirective, CategoryListPipe],
   bootstrap: [AppComponent],
   providers: [
     { provide: lookupListsToken, useValue: lookupLists},
